@@ -23,6 +23,13 @@ public class DemoqaRegistration {
     By usernameField = By.id("username");
     By emailField = By.id("email_1");
     By profilePicture = By.id("profile_pic_10");
+    By aboutYourselfField = By.id("description");
+    By passwordField = By.id("password_2");
+    By confirmPasswordField = By.id("confirm_password_password_2");
+    By registrationMessage = By.className("piereg_message");
+    By submitButton = By.name("pie_submit");
+    By registrationError = By.xpath("//*[@id=\"post-49\"]/div/p");
+
 
     public DemoqaRegistration(WebDriver driver){
         this.driver = driver;
@@ -75,10 +82,28 @@ public class DemoqaRegistration {
     }
 
     public void setUsernameAndEmail(String username, String email){
+        driver.findElement(usernameField).clear();
+        driver.findElement(emailField).clear();
         driver.findElement(usernameField).sendKeys(username);
         driver.findElement(emailField).sendKeys(email);
     }
     public void setProfilePicture(String picturePath){
         driver.findElement(profilePicture).sendKeys(picturePath);
+    }
+    public void setAboutYourself(String aboutYourself){
+        driver.findElement(aboutYourselfField).sendKeys(aboutYourself);
+    }
+    public void setPassword(String password, String confirmedPassword){
+        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(confirmPasswordField).sendKeys(confirmedPassword);
+    }
+    public void submit(){
+        driver.findElement(submitButton).click();
+    }
+    public String getRegistrationMessage(){
+        return driver.findElement(registrationMessage).getText();
+    }
+    public String getErrorMessage(){
+        return driver.findElement(registrationError).getText();
     }
 }

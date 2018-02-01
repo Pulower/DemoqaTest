@@ -38,12 +38,38 @@ public class RegistrationTest {
         objRegistration.setCountry("Poland");
         objRegistration.setDateOfBirth("5","12", "1995");
         objRegistration.setPhoneNumber("48123123123");
-        objRegistration.setUsernameAndEmail("Borys123", "borys123@onet.pl");
+        objRegistration.setUsernameAndEmail("Edward105", "edward105@onet.pl");
         objRegistration.setProfilePicture("E:\\edward.jpg");
+        objRegistration.setAboutYourself("Im Edward");
+        objRegistration.setPassword("Edward123", "Edward123");
+        objRegistration.submit();
+        Assert.assertEquals(objRegistration.getRegistrationMessage(), "Thank you for your registration");
+        System.out.println("Registered");
+
+        objRegistration.setPassword("Edward123", "Edward123");
+        objRegistration.submit();
+        Assert.assertEquals(objRegistration.getErrorMessage(), "Error: Username already exists");
+
+        System.out.println("Changing username");
+        objRegistration.setUsernameAndEmail("Edward205", "edward105@onet.pl");
+        objRegistration.setCountry("Poland");
+        objRegistration.setDateOfBirth("5","12", "1995");
+        objRegistration.setPassword("Edward123", "Edward123");
+        objRegistration.submit();
+        Assert.assertEquals(objRegistration.getErrorMessage(), "Error: E-mail address already exists");
+
+        System.out.println("Changing password");
+        objRegistration.setUsernameAndEmail("Edward205", "edward205@onet.pl");
+        objRegistration.setCountry("Poland");
+        objRegistration.setDateOfBirth("5","12", "1995");
+        objRegistration.setPassword("Edward123", "Edward123");
+        objRegistration.submit();
+        Assert.assertEquals(objRegistration.getRegistrationMessage(), "Thank you for your registration");
+        System.out.println("Registered");
     }
 
     @AfterTest
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 }
