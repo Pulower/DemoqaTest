@@ -10,6 +10,7 @@ test {
         setSuiteXmlFiles(suiteXmlFiles)
     }
 }
+task AllTests
 
 sourceCompatibility = 1.8
 

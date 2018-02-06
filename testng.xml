@@ -2,10 +2,10 @@
 
 <suite name="AllTests">
 
-    <test name="DemoqaTest">
+    <test name="Tests">
         <classes>
 
-            <class name="DatePickerTest" />
+            <class name="DatePickerTest"/>
             <class name="FramesAndWindowsTest" />
             <class name="RegistrationTest" />
             <class name="SliderTest" />
