@@ -3,6 +3,14 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
+test {
+    useTestNG() {
+        useDefaultListeners = true
+        suiteXmlFiles << new File("testng.xml")
+        setSuiteXmlFiles(suiteXmlFiles)
+    }
+}
+
 sourceCompatibility = 1.8
 
 repositories {
