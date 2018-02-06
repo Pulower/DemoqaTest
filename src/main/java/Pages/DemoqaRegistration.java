@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Random;
+
 public class DemoqaRegistration {
 
     WebDriver driver;
@@ -30,7 +32,15 @@ public class DemoqaRegistration {
     By submitButton = By.name("pie_submit");
     By registrationError = By.xpath("//*[@id=\"post-49\"]/div/p");
 
-
+    public String generateName(){
+        String chars = "0123456789abcdefghijklmnoprstuwxyzABCDEFGHIJKLMNOPRSTUWXYZ";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(10);
+        for(int i = 0; i<10; i++){
+            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        }
+        return sb.toString();
+    }
     public DemoqaRegistration(WebDriver driver){
         this.driver = driver;
     }

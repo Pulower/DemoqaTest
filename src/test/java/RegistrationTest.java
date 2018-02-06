@@ -11,9 +11,11 @@ import java.util.concurrent.TimeUnit;
 
 public class RegistrationTest {
 
-    WebDriver driver;
-    DemoqaHomePage objHomePage;
-    DemoqaRegistration objRegistration;
+    private WebDriver driver;
+    private DemoqaHomePage objHomePage;
+    private DemoqaRegistration objRegistration;
+    private String oldName;
+    private String newName;
 
     @BeforeTest
     public void setUp(){
@@ -31,6 +33,8 @@ public class RegistrationTest {
         Assert.assertEquals(objHomePage.getRegistrationTitle(), "Registration");
 
         objRegistration = new DemoqaRegistration(driver);
+        oldName = objRegistration.generateName();
+        newName = objRegistration.generateName();
         objRegistration.setFirstName("Edward");
         objRegistration.setLastName("Dziąsło");
         objRegistration.setMaritalStatus("single");
@@ -38,7 +42,7 @@ public class RegistrationTest {
         objRegistration.setCountry("Poland");
         objRegistration.setDateOfBirth("5","12", "1995");
         objRegistration.setPhoneNumber("48123123123");
-        objRegistration.setUsernameAndEmail("Edward105", "edward105@onet.pl");
+        objRegistration.setUsernameAndEmail(oldName, oldName+"@onet.pl");
         objRegistration.setProfilePicture("E:\\edward.jpg");
         objRegistration.setAboutYourself("Im Edward");
         objRegistration.setPassword("Edward123", "Edward123");
@@ -51,7 +55,7 @@ public class RegistrationTest {
         Assert.assertEquals(objRegistration.getErrorMessage(), "Error: Username already exists");
 
         System.out.println("Changing username");
-        objRegistration.setUsernameAndEmail("Edward205", "edward105@onet.pl");
+        objRegistration.setUsernameAndEmail(newName, oldName+"@onet.pl");
         objRegistration.setCountry("Poland");
         objRegistration.setDateOfBirth("5","12", "1995");
         objRegistration.setPassword("Edward123", "Edward123");
@@ -59,7 +63,7 @@ public class RegistrationTest {
         Assert.assertEquals(objRegistration.getErrorMessage(), "Error: E-mail address already exists");
 
         System.out.println("Changing password");
-        objRegistration.setUsernameAndEmail("Edward205", "edward205@onet.pl");
+        objRegistration.setUsernameAndEmail(newName, newName+"@onet.pl");
         objRegistration.setCountry("Poland");
         objRegistration.setDateOfBirth("5","12", "1995");
         objRegistration.setPassword("Edward123", "Edward123");
