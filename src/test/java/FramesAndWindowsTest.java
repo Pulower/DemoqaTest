@@ -2,17 +2,15 @@ import Pages.FramesAndWindowsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class FramesAndWindowsTest {
 
-    WebDriver driver;
-    FramesAndWindowsPage framesAndWindows;
+    private WebDriver driver;
+    private FramesAndWindowsPage framesAndWindows;
 
     @BeforeTest
     public void setUp(){

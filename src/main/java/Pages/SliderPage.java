@@ -9,12 +9,17 @@ public class SliderPage {
 
     private WebDriver driver;
     private WebElement slider;
+    private WebElement menu;
 
     public SliderPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void resetSlider(int pos) {
+        menu = driver.findElement(By.id("menu-primary-menu"));
+        while(!menu.isDisplayed()){
+            driver.navigate().refresh();
+        }
         slider = driver.findElement(By.xpath("//*[@id=\"slider-range-max\"]/span"));
         for (int i = 0; i <= pos; i++) {
             slider.sendKeys(Keys.ARROW_LEFT);

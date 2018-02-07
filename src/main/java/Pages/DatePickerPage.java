@@ -8,21 +8,25 @@ import java.util.List;
 
 public class DatePickerPage {
 
-    WebDriver driver;
+    private WebDriver driver;
+    private WebElement dateField;
 
-    By dateField = By.id("datepicker1");
-    By nextDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]");
-    By prevDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[1]");
-    By dayChooser = By.className("ui-state-default");
-    By monthName = By.className("ui-datepicker-month");
-    By year = By.className("ui-datepicker-year");
+    private By nextDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]");
+    private By prevDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[1]");
+    private By dayChooser = By.className("ui-state-default");
+    private By monthName = By.className("ui-datepicker-month");
+    private By year = By.className("ui-datepicker-year");
 
     public DatePickerPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void setPresentDate(String mm, String dd, String yy) {
-        driver.findElement(dateField).click();
+        dateField = driver.findElement(By.id("datepicker1"));
+        while(!dateField.isDisplayed()){
+            driver.navigate().refresh();
+        }
+        dateField.click();
         while (!(driver.findElement(year).getText().equals(yy))) {
             driver.findElement(nextDateBtn).click();
         }
@@ -38,7 +42,8 @@ public class DatePickerPage {
     }
 
     public void setPastDate(String mm, String dd, String yy) {
-        driver.findElement(dateField).click();
+        dateField = driver.findElement(By.id("datepicker1"));
+        dateField.click();
         while (!(driver.findElement(year).getText().equals(yy))) {
             driver.findElement(prevDateBtn).click();
         }
@@ -54,7 +59,7 @@ public class DatePickerPage {
     }
 
     public String getDate() {
-        return driver.findElement(dateField).getAttribute("value");
+        return dateField.getAttribute("value");
     }
 
 

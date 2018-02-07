@@ -2,16 +2,14 @@ import Pages.DatePickerPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
 public class DatePickerTest {
 
-    WebDriver driver;
-    DatePickerPage datePicker;
+    private WebDriver driver;
+    private DatePickerPage datePicker;
 
     @BeforeTest
     public void setUp() {
@@ -22,14 +20,14 @@ public class DatePickerTest {
         driver.manage().window().maximize();
     }
 
-    @Test
+    @Test(priority = 0)
     public void presentDateChoose() {
         datePicker = new DatePickerPage(driver);
         datePicker.setPresentDate("April", "24", "2020");
         Assert.assertEquals(datePicker.getDate(), "April 24, 2020");
     }
 
-    @Test
+    @Test(priority = 1)
     public void pastDateChoose() {
         datePicker = new DatePickerPage(driver);
         datePicker.setPastDate("January", "1", "2017");

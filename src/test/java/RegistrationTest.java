@@ -2,16 +2,16 @@ import Pages.DemoqaHomePage;
 import Pages.DemoqaRegistration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
 public class RegistrationTest {
 
     private WebDriver driver;
+    private WebDriverWait wait;
     private DemoqaHomePage objHomePage;
     private DemoqaRegistration objRegistration;
     private String oldName;
@@ -21,6 +21,7 @@ public class RegistrationTest {
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "E:\\ChromeDriver\\chromedriver.exe");
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, 25);
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.get("http://demoqa.com/");
         driver.manage().window().maximize();

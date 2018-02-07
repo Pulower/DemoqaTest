@@ -8,29 +8,29 @@ import java.util.Random;
 
 public class DemoqaRegistration {
 
-    WebDriver driver;
-    By firstNameField = By.id("name_3_firstname");
-    By lastNameField = By.id("name_3_lastname");
-    By maritalStatusSingle = By.xpath("//input[@value='single']");
-    By maritalStatusMarried = By.xpath("//input[@value='married']");
-    By maritalStatusDivorced = By.xpath("//input[@value='divorced']");
-    By hobbyDance = By.xpath("//input[@value='dance']");
-    By hobbyReading = By.xpath("//input[@value='reading']");
-    By hobbyCricket = By.xpath("//input[@value='cricket']");
-    By countryDropdown = By.id("dropdown_7");
-    By monthDropdown = By.id("mm_date_8");
-    By dayDropdown = By.id("dd_date_8");
-    By yearDropdown = By.id("yy_date_8");
-    By phoneNumberField = By.id("phone_9");
-    By usernameField = By.id("username");
-    By emailField = By.id("email_1");
-    By profilePicture = By.id("profile_pic_10");
-    By aboutYourselfField = By.id("description");
-    By passwordField = By.id("password_2");
-    By confirmPasswordField = By.id("confirm_password_password_2");
-    By registrationMessage = By.className("piereg_message");
-    By submitButton = By.name("pie_submit");
-    By registrationError = By.xpath("//*[@id=\"post-49\"]/div/p");
+    private WebDriver driver;
+    private By firstNameField = By.id("name_3_firstname");
+    private By lastNameField = By.id("name_3_lastname");
+    private By maritalStatusSingle = By.xpath("//input[@value='single']");
+    private By maritalStatusMarried = By.xpath("//input[@value='married']");
+    private By maritalStatusDivorced = By.xpath("//input[@value='divorced']");
+    private By hobbyDance = By.xpath("//input[@value='dance']");
+    private By hobbyReading = By.xpath("//input[@value='reading']");
+    private By hobbyCricket = By.xpath("//input[@value='cricket']");
+    private By countryDropdown = By.id("dropdown_7");
+    private By monthDropdown = By.id("mm_date_8");
+    private By dayDropdown = By.id("dd_date_8");
+    private By yearDropdown = By.id("yy_date_8");
+    private By phoneNumberField = By.id("phone_9");
+    private By usernameField = By.id("username");
+    private By emailField = By.id("email_1");
+    private By profilePicture = By.id("profile_pic_10");
+    private By aboutYourselfField = By.id("description");
+    private By passwordField = By.id("password_2");
+    private By confirmPasswordField = By.id("confirm_password_password_2");
+    private By registrationMessage = By.className("piereg_message");
+    private By submitButton = By.name("pie_submit");
+    private By registrationError = By.xpath("//*[@id=\"post-49\"]/div/p");
 
     public String generateName(){
         String chars = "0123456789abcdefghijklmnoprstuwxyzABCDEFGHIJKLMNOPRSTUWXYZ";
