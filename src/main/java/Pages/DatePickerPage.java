@@ -1,39 +1,51 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
 public class DatePickerPage {
 
     private WebDriver driver;
+
+    @FindBy(id = "datepicker1")
     private WebElement dateField;
 
-    private By nextDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]");
-    private By prevDateBtn = By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[1]");
-    private By dayChooser = By.className("ui-state-default");
-    private By monthName = By.className("ui-datepicker-month");
-    private By year = By.className("ui-datepicker-year");
+    @FindBy(className = "ui-datepicker-year")
+    private WebElement year;
+
+    @FindBy(className = "ui-datepicker-month")
+    private WebElement monthName;
+
+    @FindBy(className = "ui-state-default")
+    private List<WebElement> dayChooser;
+
+    @FindBy(xpath = "//*[@id=\"ui-datepicker-div\"]/div/a[1]")
+    private  WebElement prevDateBtn;
+
+    @FindBy(xpath = "//*[@id=\"ui-datepicker-div\"]/div/a[2]")
+    private WebElement nextDateBtn;
 
     public DatePickerPage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void setPresentDate(String mm, String dd, String yy) {
-        dateField = driver.findElement(By.id("datepicker1"));
         while(!dateField.isDisplayed()){
             driver.navigate().refresh();
         }
         dateField.click();
-        while (!(driver.findElement(year).getText().equals(yy))) {
-            driver.findElement(nextDateBtn).click();
+        while (!year.getText().equals(yy)) {
+            nextDateBtn.click();
         }
-        while (!(driver.findElement(monthName).getText().equals(mm))) {
-            driver.findElement(nextDateBtn).click();
+        while (!monthName.getText().equals(mm)) {
+            nextDateBtn.click();
         }
-        List<WebElement> list = driver.findElements(dayChooser);
+        List<WebElement> list = dayChooser;
         for (WebElement w : list) {
             if (w.getText().equals(dd)) {
                 w.click();
@@ -42,15 +54,14 @@ public class DatePickerPage {
     }
 
     public void setPastDate(String mm, String dd, String yy) {
-        dateField = driver.findElement(By.id("datepicker1"));
         dateField.click();
-        while (!(driver.findElement(year).getText().equals(yy))) {
-            driver.findElement(prevDateBtn).click();
+        while (!year.getText().equals(yy)) {
+            prevDateBtn.click();
         }
-        while (!(driver.findElement(monthName).getText().equals(mm))) {
-            driver.findElement(prevDateBtn).click();
+        while (!monthName.getText().equals(mm)) {
+            prevDateBtn.click();
         }
-        List<WebElement> list = driver.findElements(dayChooser);
+        List<WebElement> list = dayChooser;
         for (WebElement w : list) {
             if (w.getText().equals(dd)) {
                 w.click();

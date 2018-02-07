@@ -1,31 +1,37 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class DemoqaHomePage {
 
     private WebDriver driver;
-    private By homePageTitle = By.className("entry-title");
-    private By registrationTitle = By.className("entry-title");
-    private By registrationBtn = By.id("menu-item-374");
+
+    @FindBy(className = "entry-title")
+    private WebElement homePageTitle;
+
+    @FindBy(id = "menu-item-374")
+    private WebElement registrationBtn;
 
     public DemoqaHomePage(WebDriver driver){
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public String getHomePageTitle(){
-        while (!driver.findElement(homePageTitle).isDisplayed()){
+        while (!homePageTitle.isDisplayed()){
             driver.navigate().refresh();
         }
-        return driver.findElement(homePageTitle).getText();
+        return homePageTitle.getText();
     }
 
     public String getRegistrationTitle(){
-        return driver.findElement(registrationTitle).getText();
+        return homePageTitle.getText();
     }
 
     public void clickRegistration(){
-        driver.findElement(registrationBtn).click();
+        registrationBtn.click();
     }
 }

@@ -1,30 +1,37 @@
 package Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class FramesAndWindowsPage {
 
     private WebDriver driver;
 
-    private By newBrowserLink = By.linkText("New Browser Tab");
-    private By homeBtn = By.id("menu-item-38");
+    @FindBy(linkText = "New Browser Tab")
+    private WebElement newBrowserLink;
+
+    @FindBy(id = "menu-item-38")
+    private WebElement homeBtn;
+
+    @FindBy(id = "menu-primary-menu")
     private WebElement menu;
+
 
     public FramesAndWindowsPage(WebDriver driver){
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void createNewBrowserTab(){
-        menu = driver.findElement(By.id("menu-primary-menu"));
         while(!menu.isDisplayed()){
             driver.navigate().refresh();
         }
-        driver.findElement(newBrowserLink).click();
+        newBrowserLink.click();
     }
     public void returnToHomepage(){
-        driver.findElement(homeBtn).click();
+        homeBtn.click();
     }
 }
 
