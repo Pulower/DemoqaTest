@@ -92,15 +92,17 @@ public class DemoqaRegistration {
         PageFactory.initElements(driver, this);
     }
 
-    public void setFirstName(String strFirstName){
+    public DemoqaRegistration setFirstName(String strFirstName){
         firstNameField.sendKeys(strFirstName);
+        return this;
     }
 
-    public void setLastName(String strLastName){
+    public DemoqaRegistration setLastName(String strLastName){
         lastNameField.sendKeys(strLastName);
+        return this;
     }
 
-    public void setMaritalStatus(String status){
+    public DemoqaRegistration setMaritalStatus(String status){
         if(status.equalsIgnoreCase("single")){
             maritalStatusSingle.click();
         }
@@ -110,52 +112,62 @@ public class DemoqaRegistration {
         else if(status.equalsIgnoreCase("divorced")){
             maritalStatusDivorced.click();
         }
+        return this;
     }
-    public void setHobby(String hobby){
+    public DemoqaRegistration setHobby(String hobby){
         if(hobby.equalsIgnoreCase("dance"))
             hobbyDance.click();
         else if(hobby.equalsIgnoreCase("reading"))
             hobbyReading.click();
         else if(hobby.equalsIgnoreCase("cricket"))
             hobbyCricket.click();
+        return this;
     }
 
-    public void setCountry(String countryName){
+    public DemoqaRegistration setCountry(String countryName){
         Select drpCountry = new Select(countryDropdown);
         drpCountry.selectByVisibleText(countryName);
+        return this;
     }
 
-    public void setDateOfBirth(String mm, String dd, String yy){
+    public DemoqaRegistration setDateOfBirth(String mm, String dd, String yy){
         Select drpMonth = new Select(monthDropdown);
         Select drpDay = new Select(dayDropdown);
         Select drpYear = new Select(yearDropdown);
         drpMonth.selectByValue(mm);
         drpDay.selectByValue(dd);
         drpYear.selectByValue(yy);
+        return this;
     }
 
-    public void setPhoneNumber(String phoneNumber){
+    public DemoqaRegistration setPhoneNumber(String phoneNumber){
         phoneNumberField.sendKeys(phoneNumber);
+        return this;
     }
 
-    public void setUsernameAndEmail(String username, String email){
+    public DemoqaRegistration setUsernameAndEmail(String username, String email){
         usernameField.clear();
         emailField.clear();
         usernameField.sendKeys(username);
         emailField.sendKeys(email);
+        return this;
     }
-    public void setProfilePicture(String picturePath){
+    public DemoqaRegistration setProfilePicture(String picturePath){
         profilePicture.sendKeys(picturePath);
+        return this;
     }
-    public void setAboutYourself(String aboutYourself){
+    public DemoqaRegistration setAboutYourself(String aboutYourself){
         aboutYourselfField.sendKeys(aboutYourself);
+        return this;
     }
-    public void setPassword(String password, String confirmedPassword){
+    public DemoqaRegistration setPassword(String password, String confirmedPassword){
         passwordField.sendKeys(password);
         confirmPasswordField.sendKeys(confirmedPassword);
+        return this;
     }
-    public void submit(){
+    public DemoqaRegistration submit(){
         submitButton.click();
+        return this;
     }
     public String getRegistrationMessage(){
         return registrationMessage.getText();

@@ -23,10 +23,10 @@ public class DatePickerPage {
     @FindBy(className = "ui-state-default")
     private List<WebElement> dayChooser;
 
-    @FindBy(xpath = "//*[@id=\"ui-datepicker-div\"]/div/a[1]")
-    private  WebElement prevDateBtn;
+    @FindBy(xpath = "//span[contains(text(), 'Previous')]")
+    private WebElement prevDateBtn;
 
-    @FindBy(xpath = "//*[@id=\"ui-datepicker-div\"]/div/a[2]")
+    @FindBy(xpath = "//span[contains(text(), 'Next')]")
     private WebElement nextDateBtn;
 
     public DatePickerPage(WebDriver driver) {
@@ -35,7 +35,7 @@ public class DatePickerPage {
     }
 
     public void setPresentDate(String mm, String dd, String yy) {
-        while(!dateField.isDisplayed()){
+        while (!dateField.isDisplayed()) {
             driver.navigate().refresh();
         }
         dateField.click();

@@ -18,7 +18,6 @@ public class FramesAndWindowsPage {
     @FindBy(id = "menu-primary-menu")
     private WebElement menu;
 
-
     public FramesAndWindowsPage(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -21,11 +21,11 @@ public class SliderPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void resetSlider(int pos) {
+    public void resetSlider() {
         while(!menu.isDisplayed()){
             driver.navigate().refresh();
         }
-        for (int i = 0; i <= pos; i++) {
+        for (int i = 0; i <= 10; i++) {
             slider.sendKeys(Keys.ARROW_LEFT);
         }
     }
@@ -34,6 +34,10 @@ public class SliderPage {
         for (int i = 1; i < pos; i++) {
             slider.sendKeys(Keys.ARROW_RIGHT);
         }
+    }
+
+    public String getSliderPos(){
+        return slider.getAttribute("style");
     }
 }
 
