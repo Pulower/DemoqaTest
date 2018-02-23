@@ -19,16 +19,15 @@ public class Hook extends BaseUtil{
     @Given("^I navigate to ([^\"]*)$")
     public void iNavigateToDatePickerPage(String address) {
         System.out.println("Opening browser\n");
-        System.setProperty("webdriver.chrome.driver", "E:\\ChromeDriver\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.get(address);
     }
 
     @Before
     public void setUp(){
-
+        System.setProperty("webdriver.chrome.driver", "E:\\ChromeDriver\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
     }
 
     @After
